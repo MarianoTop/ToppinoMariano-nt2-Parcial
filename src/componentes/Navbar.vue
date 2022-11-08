@@ -4,7 +4,7 @@
 
        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
 
-      <!-- ruta root -->
+      
       <router-link to="/">
         <a class="navbar-brand" href="#">Inicio</a>
       </router-link>
@@ -16,14 +16,14 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           
-          <!-- ruta binding -->
+          
           <li class="nav-item">
             <router-link to="/formulario">
               <a class="nav-link" href="#">Formulario</a>
             </router-link>
           </li>
 
-          <!-- ruta estructura -->
+          
           <li class="nav-item">
             <router-link to="/choice">
               <a class="nav-link" href="#">Choice</a>

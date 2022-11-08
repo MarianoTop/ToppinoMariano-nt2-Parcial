@@ -6,7 +6,7 @@
 
        <vue-form :state="formstate" @submit.prevent="enviar()">
         
-        <!-- Campo nombre -->
+       
         <validate tag="div">
           <label for="nombre">Nombre</label>
           <input type="text" id="nombre" v-model="formData.nombre" required 
@@ -43,7 +43,7 @@
         </validate>
         <br>
         
-        <!-- Campo deuda -->
+       
         <validate tag="div">
           <label for="importe">Importe</label>
           <input type="number" id="importe" v-model.number="formData.importe" required name="importe" autocomplete="off" class="form-control" />
@@ -62,12 +62,19 @@
       <br>
       <hr>
 
-      <!-- Tabla para representar los datos ingresados -->
+  
       <h2>Detalle de Gastos</h2>
       <br>
 
       
       <div v-if="gastos.length" class="table-responsive">
+        <span>Presupuesto Asignado</span>
+        <br>
+        
+        <input placeholder="Ingrese el presupuesto" type="text" v-model="presupuesto"> 
+        <br>
+        <br>
+
         <table class="table">
           <tr>
             <th>Nombre</th>
@@ -121,6 +128,7 @@
         nombreMinLength: 3,
         nombreMaxLength: 15,
         total:0,
+        presupuesto:null
       }
     },
     methods: {
@@ -144,14 +152,20 @@
       },      
       analizarTotal() {
         
+
         let color = 'green'
-        if(this.total >= 1000) {
-          color = 'magenta'
-        }
+
+        if(this.presupuesto!=null && parseInt(this.presupuesto)>this.total){
+          color='red'
+        }else{
+            if(this.total >= 1000) {
+                color = 'magenta'
+            }
           
-        if(this.total > 5000) {
-          color = 'orange'
-        }
+            if(this.total > 5000) {
+                color = 'orange'
+            }
+        }       
         return {
           color
         }
